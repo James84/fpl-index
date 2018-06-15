@@ -21,8 +21,11 @@ namespace FantasyLeague
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IPlayerRepository, PlayerRepository>();
+            services.AddTransient<ITeamRepository, TeamRepository>();
 
             services.AddHttpClient("playerClient");
+            services.AddHttpClient("teamClient");
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
