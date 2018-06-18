@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FantasyLeague.Data\FantasyLeague.Data.csproj" />
+    <ProjectReference Include="..\FantasyLeague.ElasticSearch\FantasyLeague.ElasticSearch.csproj" />
   </ItemGroup>
 
 </Project>

@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FantasyLeague", "FantasyLeague\FantasyLeague.csproj", "{D74C2F84-FFD0-4EA2-A3D9-70ACAD6D57C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FantasyLeague", "FantasyLeague\FantasyLeague.csproj", "{D74C2F84-FFD0-4EA2-A3D9-70ACAD6D57C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FantasyLeague.Data", "FantasyLeague.Data\FantasyLeague.Data.csproj", "{AAFB1E02-3C55-4F25-96B5-47DBE829C13F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FantasyLeague.Data", "FantasyLeague.Data\FantasyLeague.Data.csproj", "{AAFB1E02-3C55-4F25-96B5-47DBE829C13F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FantasyLeague.Domain", "FantasyLeague.Domain\FantasyLeague.Domain.csproj", "{9CA94AFC-F82D-4E94-A383-AA8F6A7729B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FantasyLeague.Domain", "FantasyLeague.Domain\FantasyLeague.Domain.csproj", "{9CA94AFC-F82D-4E94-A383-AA8F6A7729B4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F0CA0C4E-31BF-4284-A704-4ADDEBFE2121}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FantasyLeague.Tests.Unit", "FantasyLeague.Tests.Unit\FantasyLeague.Tests.Unit.csproj", "{EF72CD13-0497-433F-9AEF-031F36E9EDC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FantasyLeague.Tests.Unit", "FantasyLeague.Tests.Unit\FantasyLeague.Tests.Unit.csproj", "{EF72CD13-0497-433F-9AEF-031F36E9EDC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FantasyLeague.ElasticSearch", "FantasyLeague.ElasticSearch\FantasyLeague.ElasticSearch.csproj", "{4C5C48AF-10DE-422F-B84A-F438D992B8E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{EF72CD13-0497-433F-9AEF-031F36E9EDC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF72CD13-0497-433F-9AEF-031F36E9EDC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF72CD13-0497-433F-9AEF-031F36E9EDC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C5C48AF-10DE-422F-B84A-F438D992B8E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C5C48AF-10DE-422F-B84A-F438D992B8E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C5C48AF-10DE-422F-B84A-F438D992B8E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C5C48AF-10DE-422F-B84A-F438D992B8E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
