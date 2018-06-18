@@ -22,27 +22,25 @@ namespace FantasyLeague.Controllers
         [HttpGet("players")]
         public async Task<IActionResult> PlayerIndex()
         {
-            var players = await _searchService
-                               .SearchQuery<Player>(q => 
-                                                        q.Bool(b => 
-                                                                b.Should(
-                                                                       bs => bs.Term(p => p.Team, "Arsenal"))));
+            //var players = await _searchService
+            //                   .SearchQuery<Player>(q => 
+            //                                            q.Bool(b => 
+            //                                                    b.Should(
+            //                                                           bs => bs.Term(p => p.Team, "Arsenal"))));
 
-            var players2 = await _searchService
-                .SearchQuery<Player>(q =>
-                    q.Bool(b => b
-                        .Should(
-                            bs => bs.Term(p => p.Team, "Arsenal"),
-                            bs => bs.Term(p => p.SecondName, "Lacazette")
-                        )
-                    ));
-
-
-            var players3 = await _searchService
-                .Search<Player>();
+            //var players2 = await _searchService
+            //    .SearchQuery<Player>(q =>
+            //        q.Bool(b => b
+            //            .Should(
+            //                bs => bs.Term(p => p.Team, "Arsenal"),
+            //                bs => bs.Term(p => p.SecondName, "Lacazette")
+            //            )
+            //        ));
 
 
-
+        var players3 = await _searchService
+            .Search<Player>();
+            
         var model = new PlayerViewModel(players3);
 
             return View(model);

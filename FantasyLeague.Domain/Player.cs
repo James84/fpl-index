@@ -1,4 +1,5 @@
 ﻿using System;
+using FantasyLeague.Domain.Enums;
 using Newtonsoft.Json;
 
 namespace FantasyLeague.Domain
@@ -177,6 +178,6 @@ namespace FantasyLeague.Domain
         public long ElementType { get; set; }
 
         [JsonProperty("team")]
-        public long Team { get; set; }
+        public Teams Team { get; set; }
     }
 }

@@ -1,9 +1,8 @@
-﻿using System;
-using FantasyLeague.ElasticSearch.Interfaces;
+﻿using FantasyLeague.ElasticSearch.Interfaces;
 using Nest;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using FantasyLeague.Domain;
 
 namespace FantasyLeague.ElasticSearch
 {

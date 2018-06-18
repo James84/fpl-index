@@ -1,4 +1,5 @@
-﻿using FantasyLeague.ElasticSearch.Interfaces;
+﻿using System;
+using FantasyLeague.ElasticSearch.Interfaces;
 using Nest;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -19,6 +20,15 @@ namespace FantasyLeague.ElasticSearch
             foreach (var entity in data)
             {
                 await Index(entity);
+            }
+        }
+
+        public async Task Index<T>(IEnumerable<T> data, Func<T, T> map) where T : class
+        {
+            foreach (var entity in data)
+            {
+                var mutatedEntity = map(entity);
+                await Index(mutatedEntity);
             }
         }
 
