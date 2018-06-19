@@ -34,7 +34,8 @@ namespace FantasyLeague.ElasticSearch
 
         public async Task DeleteIndex(string index)
         {
-            await _elasticClient.DeleteIndexAsync(index);
+            var deleteResponse = await _elasticClient.DeleteIndexAsync(new DeleteIndexRequest("players"));
+            ;
         }
 
         private async Task Index<T>(T data) where T: class

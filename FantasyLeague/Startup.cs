@@ -1,5 +1,6 @@
 ﻿using FantasyLeague.Data;
 using FantasyLeague.Data.Interfaces;
+using FantasyLeague.Domain;
 using FantasyLeague.ElasticSearch;
 using FantasyLeague.ElasticSearch.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -28,7 +29,8 @@ namespace FantasyLeague
             services.AddTransient<IPlayerRepository, PlayerRepository>();
             services.AddTransient<ITeamRepository, TeamRepository>();
             services.AddTransient<IIndexer, Indexer>();
-            services.AddTransient<ISearchService, SearchService>();
+            services.AddTransient<ISearchService<Player>, PlayerSearchService>();
+            services.AddTransient<ISearchService<Team>, TeamSearchService>();
             services.AddCors();
             services.AddHttpClient("playerClient");
             services.AddHttpClient("teamClient");

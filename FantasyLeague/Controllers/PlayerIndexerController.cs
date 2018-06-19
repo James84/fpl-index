@@ -10,12 +10,12 @@ namespace FantasyLeague.Controllers
 {
     [ApiController]
     [Route("players")]
-    public class PlayerController : ControllerBase
+    public class PlayerIndexerController : ControllerBase
     {
         private readonly IPlayerRepository _playerRepository;
         private readonly IIndexer _indexer;
 
-        public PlayerController(IPlayerRepository playerRepository, IIndexer indexer)
+        public PlayerIndexerController(IPlayerRepository playerRepository, IIndexer indexer)
         {
             _playerRepository = playerRepository;
             _indexer = indexer;
@@ -34,8 +34,16 @@ namespace FantasyLeague.Controllers
         {
             var players = await _playerRepository.GetAll();
 
-            await _indexer.DeleteIndex("player");
+            await _indexer.DeleteIndex("players");
             await _indexer.Index(players);
+
+            return Ok();
+        }
+
+        [HttpGet("delete")]
+        public async Task<ActionResult> Delete()
+        {
+            await _indexer.DeleteIndex("players");
 
             return Ok();
         }
