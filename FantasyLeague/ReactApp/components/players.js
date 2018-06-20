@@ -1,20 +1,11 @@
 ﻿import React, { Component } from "react";
-import axios from "axios"
+import { connect } from 'react-redux';
+import { players } from '../reducers/index';
 
-export default class Players extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = { players: [] };
-
-        const request = axios.get('http://fantasy.league.local/playersearch/all').then(res => {
-            this.setState({ players: res.data });
-        });
-    }
+class Players extends Component {
     
     renderPlayers(player){
-//        console.log('playerProps', player)
-
+        //console.log('player', player);
         return (
             <tr key={player.id}>
                 <td>{player.firstName}</td>
@@ -40,10 +31,17 @@ export default class Players extends Component {
                     </thead>
                     <tbody>
                     {
-                        this.state.players.map(this.renderPlayers)
+                        this.props.players.map(this.renderPlayers)
                     }
                     </tbody>
                 </table>
         );
     }
 }
+
+function mapDispatchToProps(state){
+    console.log('state', state);
+    return ({players: state.players});
+}
+
+export default connect(mapDispatchToProps)(Players)

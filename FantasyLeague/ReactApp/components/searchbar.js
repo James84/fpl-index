@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { searchPlayers } from '../actions/search_players';
 
-export default class SearchBar extends Component{
+class SearchBar extends Component{
     constructor(props){
         super(props);
         
@@ -13,13 +15,7 @@ export default class SearchBar extends Component{
     
     submitForm(event){
         event.preventDefault();
-        
-        let players = axios(`http://fantasy.league.local/playersearch?lastname=${this.state.term}`).then(res => {
-            this.setState({ players: res.data});
-        });
-
-        console.log("players", this.state.players);
-        
+        this.props.searchPlayers(this.state.term);
         this.setState({ term: '' });
     }
     
@@ -43,3 +39,9 @@ export default class SearchBar extends Component{
         );
     }
 }
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({ searchPlayers }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SearchBar);

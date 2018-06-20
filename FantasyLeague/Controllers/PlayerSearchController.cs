@@ -15,7 +15,7 @@ using Nest;
 namespace FantasyLeague.Controllers
 {
     [ApiController]
-    [Route("playersearch")]
+    [Route("search/players")]
     public class PlayerSearchController : ControllerBase
     {
         private readonly ISearchService<Player> _searchService;
@@ -27,14 +27,28 @@ namespace FantasyLeague.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("")]
+        [HttpGet("prefix")]
         // GET: /<controller>/
-        public async Task<ActionResult<IEnumerable<PlayerModel>>> Players([FromQuery]PlayerSearchCriteria criteria)
+        public async Task<ActionResult<IEnumerable<PlayerModel>>> PlayerPrefixSearch([FromQuery]PlayerSearchCriteria criteria)
         {
             //PlayerSearchCriteria criteria = new PlayerSearchCriteria();
 
             var players = await _searchService
-                                 .SearchQuery(criteria);
+                                 .PrefixSearchQuery(criteria);
+
+            var mappedPlayers = players.Select(p => _mapper.Map<PlayerModel>(p));
+
+            return mappedPlayers.ToList();
+        }
+
+        [HttpGet("")]
+        // GET: /<controller>/
+        public async Task<ActionResult<IEnumerable<PlayerModel>>> PlayerSearch([FromQuery]PlayerSearchCriteria criteria)
+        {
+            //PlayerSearchCriteria criteria = new PlayerSearchCriteria();
+
+            var players = await _searchService
+                .SearchQuery(criteria);
 
             var mappedPlayers = players.Select(p => _mapper.Map<PlayerModel>(p));
 

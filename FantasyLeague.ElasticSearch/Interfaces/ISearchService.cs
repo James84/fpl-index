@@ -1,5 +1,4 @@
 ﻿using FantasyLeague.Domain;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,5 +8,6 @@ namespace FantasyLeague.ElasticSearch.Interfaces
     {
         Task<IEnumerable<T>> Search( /*Func<QueryContainerDescriptor<T>, QueryContainer> query*/);
         Task<IEnumerable<T>> SearchQuery(PlayerSearchCriteria criteria);
+        Task<IEnumerable<Player>> PrefixSearchQuery(PlayerSearchCriteria criteria);
     }
 }

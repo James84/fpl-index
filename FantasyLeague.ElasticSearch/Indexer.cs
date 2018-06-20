@@ -3,6 +3,7 @@ using FantasyLeague.ElasticSearch.Interfaces;
 using Nest;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using FantasyLeague.Domain;
 
 namespace FantasyLeague.ElasticSearch
 {

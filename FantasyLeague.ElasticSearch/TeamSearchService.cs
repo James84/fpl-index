@@ -18,5 +18,10 @@ namespace FantasyLeague.ElasticSearch
         {
             throw new NotImplementedException();
         }
+
+        public Task<IEnumerable<Player>> PrefixSearchQuery(PlayerSearchCriteria criteria)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

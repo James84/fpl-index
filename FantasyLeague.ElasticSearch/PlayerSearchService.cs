@@ -28,18 +28,18 @@ namespace FantasyLeague.ElasticSearch
         public async Task<IEnumerable<Player>> SearchQuery(PlayerSearchCriteria criteria)
         {
             var results = await _elasticClient.SearchAsync<Player>(s => s.Size(10000)
-                                                                         .Query(q => q.Match(m => m.Field(p => p.SecondName)
-                                                                                                   .Analyzer("standard")
-                                                                                                   .Boost(1.1)
-                                                                                                   .CutoffFrequency(0.001)
-                                                                                                   .Query(criteria.LastName)
-                                                                                                   .Fuzziness(Fuzziness.Auto)
-                                                                                                   .Lenient()
-                                                                                                   .FuzzyTranspositions()
-                                                                                                   .MinimumShouldMatch(2)
-                                                                                                   .Operator(Operator.Or)
-                                                                                                   .FuzzyRewrite(MultiTermQueryRewrite.TopTermsBlendedFreqs(10))
-                                                                                                   .Name("lastName"))));
+                .Query(q => q.Match(m => m.Field(p => p.SecondName).Query(criteria.LastName))));
+
+
+            return results.Documents;
+        }
+
+        public async Task<IEnumerable<Player>> PrefixSearchQuery(PlayerSearchCriteria criteria)
+        {
+            var results = await _elasticClient.SearchAsync<Player>(s => s.Size(10000)
+                                                                         .Query(q => q.Prefix(m => m.Field(p => p.SecondName)
+                                                                                                    .Value(criteria.LastName))));
+
 
             return results.Documents;
         }
