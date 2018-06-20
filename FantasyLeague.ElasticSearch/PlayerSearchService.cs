@@ -28,9 +28,7 @@ namespace FantasyLeague.ElasticSearch
         public async Task<IEnumerable<Player>> SearchQuery(PlayerSearchCriteria criteria)
         {
             var results = await _elasticClient.SearchAsync<Player>(s => s.Size(10000)
-                                                                         .Query(q => q.Match(m => m.BuildMatchQuery(p => p.SecondName, 
-                                                                                                                         criteria.LastName, 
-                                                                                                                         "lastNameQuery"))));
+                                                                         .Query(q => q.Match(m => m.Field(p => p.SecondName).Query(criteria.LastName))));
 
             return results.Documents;
         }
