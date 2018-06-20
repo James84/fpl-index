@@ -7,7 +7,7 @@ export default class Players extends Component {
         super(props);
         this.state = { players: [] };
 
-        const request = axios.get('https://localhost:44371/players/all').then(res => {
+        const request = axios.get('http://fantasy.league.local/playersearch/all').then(res => {
             this.setState({ players: res.data });
         });
     }
@@ -17,11 +17,11 @@ export default class Players extends Component {
 
         return (
             <tr key={player.id}>
-                <td>{player.first_name}</td>
-                <td>{player.second_name}</td>
+                <td>{player.firstName}</td>
+                <td>{player.secondName}</td>
                 <td>{player.team}</td>
-                <td>{player.squad_number}</td>
-                <td>{player.total_points}</td>
+                <td>{player.squadNumber}</td>
+                <td>{player.totalPoints}</td>
             </tr>
         );
     }

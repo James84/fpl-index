@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 export default class SearchBar extends Component{
     constructor(props){
@@ -12,7 +13,13 @@ export default class SearchBar extends Component{
     
     submitForm(event){
         event.preventDefault();
-        console.log(this.state.term);
+        
+        let players = axios(`http://fantasy.league.local/playersearch?lastname=${this.state.term}`).then(res => {
+            this.setState({ players: res.data});
+        });
+
+        console.log("players", this.state.players);
+        
         this.setState({ term: '' });
     }
     
