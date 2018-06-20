@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using FantasyLeague.Domain;
+﻿using FantasyLeague.Domain;
 using FantasyLeague.ElasticSearch.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FantasyLeague.ElasticSearch
 {
@@ -15,6 +14,11 @@ namespace FantasyLeague.ElasticSearch
         }
 
         public Task<IEnumerable<Team>> SearchQuery(PlayerSearchCriteria criteria)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Player> SearchById(int id)
         {
             throw new NotImplementedException();
         }

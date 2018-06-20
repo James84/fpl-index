@@ -4,10 +4,21 @@ import { players } from '../reducers/index';
 
 class Players extends Component {
     
+    constructor(props) {
+        super(props);
+        
+        this.renderPlayers = this.renderPlayers.bind(this);
+    }
+    
+    getPlayer(){
+        console.log('get player');
+    }
+    
+    
     renderPlayers(player){
         //console.log('player', player);
         return (
-            <tr key={player.id}>
+            <tr onClick={this.getPlayer} key={player.id}>
                 <td>{player.firstName}</td>
                 <td>{player.secondName}</td>
                 <td>{player.team}</td>

@@ -8,6 +8,7 @@ namespace FantasyLeague.ElasticSearch.Interfaces
     {
         Task<IEnumerable<T>> Search( /*Func<QueryContainerDescriptor<T>, QueryContainer> query*/);
         Task<IEnumerable<T>> SearchQuery(PlayerSearchCriteria criteria);
+        Task<Player> SearchById(int id);
         Task<IEnumerable<Player>> PrefixSearchQuery(PlayerSearchCriteria criteria);
     }
 }

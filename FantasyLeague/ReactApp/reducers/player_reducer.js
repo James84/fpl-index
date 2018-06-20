@@ -1,4 +1,4 @@
-import { SEARCH_PLAYERS } from '../actions/search_players';
+import { SEARCH_PLAYERS } from '../actions/players';
 
 export default function(state = [], action){
     

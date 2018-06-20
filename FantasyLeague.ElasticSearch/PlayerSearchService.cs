@@ -1,8 +1,8 @@
 ﻿using FantasyLeague.Domain;
-using FantasyLeague.ElasticSearch.Extensions;
 using FantasyLeague.ElasticSearch.Interfaces;
 using Nest;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace FantasyLeague.ElasticSearch
@@ -42,6 +42,15 @@ namespace FantasyLeague.ElasticSearch
 
 
             return results.Documents;
+        }
+
+        public async Task<Player> SearchById(int id)
+        {
+            var results = await _elasticClient.SearchAsync<Player>(s => s.Size(1)
+                .Query(q => q.Match(m => m.Field(p => p.Id).Query(id.ToString()))));
+
+
+            return results.Documents.Single();
         }
     }
 }

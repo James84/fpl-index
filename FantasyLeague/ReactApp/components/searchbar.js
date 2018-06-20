@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { searchPlayers } from '../actions/search_players';
+import { searchPlayers } from '../actions/players';
 
 class SearchBar extends Component{
     constructor(props){
@@ -21,6 +21,7 @@ class SearchBar extends Component{
     
     onInputChange(event){
         this.setState({ term: event.target.value });
+        this.props.searchPlayers(this.state.term);
     }
     
     render(){

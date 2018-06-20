@@ -7,7 +7,7 @@ export default class App extends Component{
         return(
             <section>
                 <SearchBar />
-                <Players/>
+                <Players />
             </section>
         );
     }
