@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
-
+using AutoMapper;
 namespace FantasyLeague
 {
     public class Startup
@@ -34,6 +34,8 @@ namespace FantasyLeague
             services.AddCors();
             services.AddHttpClient("playerClient");
             services.AddHttpClient("teamClient");
+            services.AddAutoMapper(typeof(Startup));
+
             services.AddMvc()
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddJsonOptions(options =>

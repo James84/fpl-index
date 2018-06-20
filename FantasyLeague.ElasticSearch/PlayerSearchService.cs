@@ -10,7 +10,7 @@ namespace FantasyLeague.ElasticSearch
     public class PlayerSearchService : ISearchService<Player>
     {
         private readonly ElasticClient _elasticClient;
-
+        
         public PlayerSearchService()
         {
             _elasticClient = ElasticSearchClientFactory.Create();
@@ -27,9 +27,10 @@ namespace FantasyLeague.ElasticSearch
 
         public async Task<IEnumerable<Player>> SearchQuery(PlayerSearchCriteria criteria)
         {
-            var results = await _elasticClient.SearchAsync<Player>(s => s.Size(10000).Query(q => q.Match(m => m.BuildMatchQuery(p => p.SecondName, 
-                                                                                                                                     criteria.LastName, 
-                                                                                                                                     "lastNameQuery"))));
+            var results = await _elasticClient.SearchAsync<Player>(s => s.Size(10000)
+                                                                         .Query(q => q.Match(m => m.BuildMatchQuery(p => p.SecondName, 
+                                                                                                                         criteria.LastName, 
+                                                                                                                         "lastNameQuery"))));
 
             return results.Documents;
         }

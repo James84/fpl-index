@@ -32,12 +32,12 @@ namespace FantasyLeague.Controllers
         [HttpGet("index")]
         public async Task<ActionResult> Index()
         {
-            var players = await _playerRepository.GetAll();
+            var players = (await _playerRepository.GetAll()).ToList();
 
             await _indexer.DeleteIndex("players");
             await _indexer.Index(players);
 
-            return Ok();
+            return Ok($"{players.Count} players indexed.");
         }
 
         [HttpGet("delete")]

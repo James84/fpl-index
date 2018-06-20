@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Nest;
+﻿using Nest;
+using System;
 
 namespace FantasyLeague.ElasticSearch.Extensions
 {

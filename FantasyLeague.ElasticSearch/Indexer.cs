@@ -34,13 +34,13 @@ namespace FantasyLeague.ElasticSearch
 
         public async Task DeleteIndex(string index)
         {
-            var deleteResponse = await _elasticClient.DeleteIndexAsync(new DeleteIndexRequest("players"));
+            var deleteResponse = await _elasticClient.DeleteIndexAsync(new DeleteIndexRequest(index));
             ;
         }
 
         private async Task Index<T>(T data) where T: class
         {
-            await _elasticClient.IndexDocumentAsync(data);
+            var indexResponse = await _elasticClient.IndexDocumentAsync(data);
         }
     }
 }
