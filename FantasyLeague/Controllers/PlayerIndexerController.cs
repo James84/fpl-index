@@ -1,4 +1,5 @@
-﻿using FantasyLeague.Data.Interfaces;
+﻿using System;
+using FantasyLeague.Data.Interfaces;
 using FantasyLeague.Domain;
 using FantasyLeague.ElasticSearch.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -32,12 +33,24 @@ namespace FantasyLeague.Controllers
         [HttpGet("index")]
         public async Task<ActionResult> Index()
         {
-            var players = (await _playerRepository.GetAll()).ToList();
+            try
+            {
+                var players = (await _playerRepository.GetAll()).ToList();
 
-            await _indexer.DeleteIndex("players");
-            await _indexer.Index(players);
+                if (!players.Any())
+                {
+                    return NotFound("No players to index.");
+                }
 
-            return Ok($"{players.Count} players indexed.");
+                await _indexer.DeleteIndex("players");
+                await _indexer.Index(players);
+
+                return Ok($"{players.Count} players indexed.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error indexing players: {ex}");
+            }
         }
 
         [HttpGet("delete")]

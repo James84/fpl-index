@@ -7,7 +7,7 @@ namespace FantasyLeague.Domain
     public class Player
     {
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("photo")]
         public string Photo { get; set; }
@@ -179,5 +179,6 @@ namespace FantasyLeague.Domain
 
         [JsonProperty("team")]
         public Teams Team { get; set; }
+        public PlayerSummary Summary { get; set; }
     }
 }

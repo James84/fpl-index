@@ -1,4 +1,5 @@
-﻿using FantasyLeague.Data;
+﻿using System;
+using FantasyLeague.Data;
 using FantasyLeague.Data.Interfaces;
 using FantasyLeague.Domain;
 using FantasyLeague.ElasticSearch;
@@ -26,14 +27,12 @@ namespace FantasyLeague
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IPlayerRepository, PlayerRepository>();
-            services.AddTransient<ITeamRepository, TeamRepository>();
-            services.AddTransient<IIndexer, Indexer>();
-            services.AddTransient<ISearchService<Player>, PlayerSearchService>();
-            services.AddTransient<ISearchService<Team>, TeamSearchService>();
+            RegisterServices(services);
+
             services.AddCors();
-            services.AddHttpClient("playerClient");
-            services.AddHttpClient("teamClient");
+
+            SetUpHttpClients(services);
+
             services.AddAutoMapper(typeof(Startup));
 
             services.AddMvc()
@@ -44,6 +43,22 @@ namespace FantasyLeague
                     options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                     options.SerializerSettings.Converters.Add(new StringEnumConverter());
                 });
+        }
+
+        private static void RegisterServices(IServiceCollection services)
+        {
+            services.AddTransient<IPlayerRepository, PlayerRepository>();
+            services.AddTransient<ITeamRepository, TeamRepository>();
+            services.AddTransient<IIndexer, Indexer>();
+            services.AddTransient<ISearchService<Player>, PlayerSearchService>();
+            services.AddTransient<ISearchService<Team>, TeamSearchService>();
+        }
+
+        private static void SetUpHttpClients(IServiceCollection services)
+        {
+            services.AddHttpClient("playerClient",
+                client => { client.BaseAddress = new Uri("https://fantasy.premierleague.com"); });
+            services.AddHttpClient("teamClient");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

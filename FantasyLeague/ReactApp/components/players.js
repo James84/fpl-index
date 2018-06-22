@@ -8,6 +8,7 @@ class Players extends Component {
         super(props);
         
         this.renderPlayers = this.renderPlayers.bind(this);
+        this.getPlayer = this.getPlayer.bind(this);
     }
     
     getPlayer(){
