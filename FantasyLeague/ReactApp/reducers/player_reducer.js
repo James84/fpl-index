@@ -1,9 +1,9 @@
-import { SEARCH_PLAYERS } from '../actions/players';
+import { GET_PLAYER } from '../actions/players';
 
-export default function(state = [], action){
+export default function(state = {}, action){
     
     switch(action.type){
-        case SEARCH_PLAYERS:
+        case GET_PLAYER:
             return action.payload.data;
     }
     

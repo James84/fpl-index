@@ -21,7 +21,7 @@ class SearchBar extends Component{
     
     onInputChange(event){
         this.setState({ term: event.target.value });
-        this.props.searchPlayers(this.state.term);
+        //this.props.searchPlayers(this.state.term);
     }
     
     render(){

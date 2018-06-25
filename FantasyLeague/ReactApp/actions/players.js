@@ -22,6 +22,8 @@ export function getPlayer(id){
     
     const request = axios.get(url);
     
+    console.log('player requested!');
+    
     return {
         type: GET_PLAYER,
         payload: request

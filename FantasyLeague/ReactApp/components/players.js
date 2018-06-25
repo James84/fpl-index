@@ -3,23 +3,16 @@ import { connect } from 'react-redux';
 import { players } from '../reducers/index';
 
 class Players extends Component {
-    
-    constructor(props) {
-        super(props);
-        
-        this.renderPlayers = this.renderPlayers.bind(this);
-        this.getPlayer = this.getPlayer.bind(this);
-    }
-    
-    getPlayer(){
-        console.log('get player');
+
+    getPlayer(id){
+        window.location.href = `/player/${id}`
     }
     
     
     renderPlayers(player){
         //console.log('player', player);
         return (
-            <tr onClick={this.getPlayer} key={player.id}>
+            <tr onClick={this.getPlayer.bind(this, player.id)} key={player.id}>
                 <td>{player.firstName}</td>
                 <td>{player.secondName}</td>
                 <td>{player.team}</td>
@@ -43,7 +36,7 @@ class Players extends Component {
                     </thead>
                     <tbody>
                     {
-                        this.props.players.map(this.renderPlayers)
+                        this.props.players.map(this.renderPlayers.bind(this))
                     }
                     </tbody>
                 </table>
@@ -52,7 +45,7 @@ class Players extends Component {
 }
 
 function mapDispatchToProps(state){
-    console.log('state', state);
+//    console.log('state', state);
     return ({players: state.players});
 }
 
