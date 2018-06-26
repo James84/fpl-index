@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getPlayer } from '../actions/players'
 import _ from 'lodash';
-import Chart from './chart';
+import Chart from './sparklines_chart';
 import SearchBar from './searchbar'
+
 class Player extends Component {
     componentDidMount(){
         this.props.getPlayer(this.props.match.params.id);
