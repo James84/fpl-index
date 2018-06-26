@@ -21,7 +21,16 @@ class Player extends Component {
         
         return (
             <div>
-                { `${player.firstName} ${player.secondName}` }
+                <img src={`https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/${player.photo}`} alt="player image" />
+                <h3>{ `${player.firstName} ${player.secondName}` }</h3>
+                <h4>{player.squadNumber}</h4>
+                <ul>
+                    <li>Points: {player.totalPoints}</li>
+                    <li>Assists: {player.assists}</li>
+                    <li>Goals: {player.goalsScored}</li>
+                    <li>Red cards: {player.redCards}</li>
+                    <li>Yellow cards: {player.yellowCards}</li>
+                </ul>
             </div>
         );
     }
@@ -29,6 +38,7 @@ class Player extends Component {
     render(){
         return (
             <div>
+                <a href="/">&lt;&lt;&lt; Back to search</a>
                 {this.renderPlayer()}
             </div>
         );

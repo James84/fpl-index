@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using FantasyLeague.Data.Extensions;
 
 namespace FantasyLeague.Data
 {
@@ -32,6 +33,10 @@ namespace FantasyLeague.Data
 
             foreach (var player in players)
             {
+                var convertImagePath = player.Photo?.ConvertJpgToPng();
+
+                player.Photo = convertImagePath;
+
                 var playerSummary = await EnrichPlayerData(player.Id);
 
                 player.Summary = playerSummary;
