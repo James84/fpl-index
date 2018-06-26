@@ -1,0 +1,7 @@
+.player-image{
+    width: 90px;
+}
+
+.player-record:hover{
+    cursor: pointer;
+}
