@@ -179,6 +179,7 @@ namespace FantasyLeague.Domain
 
         [JsonProperty("team")]
         public Teams Team { get; set; }
+
         public PlayerSummary Summary { get; set; }
     }
 }

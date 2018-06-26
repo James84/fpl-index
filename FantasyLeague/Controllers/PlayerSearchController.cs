@@ -31,7 +31,7 @@ namespace FantasyLeague.Controllers
             var players = await _searchService
                                  .PrefixSearchQuery(criteria);
 
-            var mappedPlayers = players.Select(p => _mapper.Map<PlayerModel>(p));
+            var mappedPlayers = players.ToList().Select(p => _mapper.Map<Player, PlayerModel>(p));
 
             return mappedPlayers.ToList();
         }

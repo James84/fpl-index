@@ -120,5 +120,7 @@ namespace FantasyLeague.Models
         public long ElementType { get; set; }
 
         public Teams Team { get; set; }
+
+        public PlayerSummaryModel PlayerSummary { get; set; }
     }
 }
