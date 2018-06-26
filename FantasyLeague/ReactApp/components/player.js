@@ -25,30 +25,40 @@ class Player extends Component {
         console.log('player points', pointHistory);
         
         return (
-            <div>
-                <img className="player-image" src={`https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/${player.photo}`} alt="player image" />
-                <h4>{player.squadNumber}</h4>                
-                <h3>{ `${player.firstName} ${player.secondName}` }</h3>
-                <h4>{player.team}</h4>
-                <h4>{player.elementType}</h4>
-                <ul>
-                    <li>Points: {player.totalPoints}</li>
-                    <li>Points per game: {player.pointsPerGame}</li>
-                    <li>Assists: {player.assists}</li>
-                    <li>Goals: {player.goalsScored}</li>
-                    <li>Red cards: {player.redCards}</li>
-                    <li>Yellow cards: {player.yellowCards}</li>
-                </ul>
-                <Chart data={pointHistory} label="Points"/>
+            <div className="card player-card text-center">
+                <div className="player-card-content">
+                    <img className="card-img-top player-image mx-auto" src={`https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/${player.photo}`} alt="player image" />
+                    <div className="card-body">
+                        <h4 className="card-title">{ `${player.firstName} ${player.secondName}` }</h4>
+                        <h5>{player.team}</h5>
+                        <h5>{player.squadNumber}</h5>                
+                        <h5>{player.elementType}</h5>
+                        <div className="card-body">
+                            <div className="card-text">
+                                <div>Points: {player.totalPoints}</div>
+                                <div>Points per game: {player.pointsPerGame}</div>
+                                <div>Assists: {player.assists}</div>
+                                <div>Goals: {player.goalsScored}</div>
+                                <div>Red cards: {player.redCards}</div>
+                                <div>Yellow cards: {player.yellowCards}</div>
+                            </div>
+                            <Chart data={pointHistory} label="Points"/>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
     
     render(){
         return (
-            <div className="row justify-content-lg-center">
+            <div>
+                <div className="row">
                     <a href="/">&lt;&lt;&lt; Back to search</a>
+                </div>
+                <div className="row justify-content-lg-center">
                     {this.renderPlayer()}
+                </div>
             </div>
         );
     }

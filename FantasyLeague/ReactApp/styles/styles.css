@@ -5,3 +5,11 @@
 .player-record:hover{
     cursor: pointer;
 }
+
+.player-card{
+    width: 30rem;
+}
+
+.player-card-content{
+    padding: 2em;
+}
