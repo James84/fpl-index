@@ -8,7 +8,7 @@ class Player extends Component {
     componentDidMount(){
         this.props.getPlayer(this.props.match.params.id);
     }
-    
+
     renderPlayer(){
         const player = this.props.player;
         
@@ -37,8 +37,25 @@ class Player extends Component {
                             <div className="card-text">
                                 <div>Points: {player.totalPoints}</div>
                                 <div>Points per game: {player.pointsPerGame}</div>
-                                <div>Assists: {player.assists}</div>
-                                <div>Goals: {player.goalsScored}</div>
+                                {
+                                    (() => {
+                                            switch(player.elementType){
+                                                case 'Goalkeeper':
+                                                    return (
+                                                        <div>
+                                                            <div>Cleansheets: {player.cleanSheets}</div>
+                                                            <div>Saves: {player.saves}</div>
+                                                        </div>
+                                                    );
+                                                default:
+                                                    return (
+                                                        <div>
+                                                            <div>Assists: {player.assists}</div>
+                                                            <div>Goals: {player.goalsScored}</div>
+                                                        </div>);
+                                            }
+                                    })()
+                                }
                                 <div>Red cards: {player.redCards}</div>
                                 <div>Yellow cards: {player.yellowCards}</div>
                             </div>
