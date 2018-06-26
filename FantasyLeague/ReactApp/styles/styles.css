@@ -7,9 +7,14 @@
 }
 
 .player-card{
+    margin-top: 1em;
     width: 30rem;
 }
 
 .player-card-content{
     padding: 2em;
+}
+
+.search-bar, .player-details-container{
+    margin-top: 1em;
 }
