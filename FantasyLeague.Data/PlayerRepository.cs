@@ -1,11 +1,11 @@
-﻿using FantasyLeague.Data.Interfaces;
+﻿using FantasyLeague.Data.Extensions;
+using FantasyLeague.Data.Interfaces;
 using FantasyLeague.Domain;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using FantasyLeague.Data.Extensions;
 
 namespace FantasyLeague.Data
 {

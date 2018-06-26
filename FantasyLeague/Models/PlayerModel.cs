@@ -1,5 +1,6 @@
 ﻿using FantasyLeague.Domain.Enums;
 using System;
+using FantasyLeague.Domain;
 
 namespace FantasyLeague.Models
 {
@@ -117,7 +118,7 @@ namespace FantasyLeague.Models
 
         public long EaIndex { get; set; }
 
-        public long ElementType { get; set; }
+        public Position ElementType { get; set; }
 
         public Teams Team { get; set; }
 

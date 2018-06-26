@@ -175,11 +175,19 @@ namespace FantasyLeague.Domain
         public long EaIndex { get; set; }
 
         [JsonProperty("element_type")]
-        public long ElementType { get; set; }
+        public Position ElementType { get; set; }
 
         [JsonProperty("team")]
         public Teams Team { get; set; }
 
         public PlayerSummary Summary { get; set; }
+    }
+
+    public enum Position
+    {
+        Goalkeeper = 1,
+        Defender = 2,
+        Midfielder = 3,
+        Striker = 4
     }
 }
