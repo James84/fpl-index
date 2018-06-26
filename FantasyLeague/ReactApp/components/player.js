@@ -9,6 +9,25 @@ class Player extends Component {
         this.props.getPlayer(this.props.match.params.id);
     }
 
+    renderConditionalData(player){
+        switch(player.elementType){
+            case 'Goalkeeper':
+                return (
+                    <div>
+                        <div>Cleansheets: {player.cleanSheets}</div>
+                        <div>Saves: {player.saves}</div>
+                    </div>
+                );
+            default:
+                return (
+                    <div>
+                        <div>Assists: {player.assists}</div>
+                        <div>Goals: {player.goalsScored}</div>
+                    </div>
+                );
+        }
+    }
+    
     renderPlayer(){
         const player = this.props.player;
         
@@ -21,8 +40,6 @@ class Player extends Component {
         }
         
         const pointHistory = player.playerSummary.history.map(history => history.totalPoints);
-        
-        console.log('player points', pointHistory);
         
         return (
             <div className="card-group">
@@ -37,25 +54,7 @@ class Player extends Component {
                             <div className="card-text">
                                 <div>Points: {player.totalPoints}</div>
                                 <div>Points per game: {player.pointsPerGame}</div>
-                                {
-                                    (() => {
-                                            switch(player.elementType){
-                                                case 'Goalkeeper':
-                                                    return (
-                                                        <div>
-                                                            <div>Cleansheets: {player.cleanSheets}</div>
-                                                            <div>Saves: {player.saves}</div>
-                                                        </div>
-                                                    );
-                                                default:
-                                                    return (
-                                                        <div>
-                                                            <div>Assists: {player.assists}</div>
-                                                            <div>Goals: {player.goalsScored}</div>
-                                                        </div>);
-                                            }
-                                    })()
-                                }
+                                { this.renderConditionalData(player) }
                                 <div>Red cards: {player.redCards}</div>
                                 <div>Yellow cards: {player.yellowCards}</div>
                             </div>
@@ -65,7 +64,6 @@ class Player extends Component {
                 <div className="card player-card text-center">
                     <div className="player-card-content">
                         <div className="card-body">
-                            <Chart data={pointHistory} label="Points"/>
                             <Chart data={pointHistory} label="Points"/>
                         </div>
                     </div>
