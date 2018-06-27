@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getPlayer } from '../actions/players'
 import _ from 'lodash';
 {/*import Chart from './sparklines_chart';*/}
-import Chart from './chart'
+import LineChart from './chart'
 import SearchBar from './searchbar'
 
 class Player extends Component {
@@ -44,6 +44,17 @@ class Player extends Component {
         const pointHistory = player.playerSummary.history.map(history => history.totalPoints);
         const labels = player.playerSummary.history.map(history => history.round);
         
+        const chartDatasets = [{
+            data: pointHistory,
+            label: "Points per game",
+            backgroundColor: "rgba(75,192,192,0.4)",
+            borderColor: "rgba(75,192,192,1)",
+            pointBackgroundColor: "#fff",
+            pointsBorderColor: "rgba(75,192,192,1)",
+            fill: false,
+            borderJoinStyle: "miter"
+        }];
+        
         return (
             <div className="card-group">
                 <div className="card player-card text-center">
@@ -67,7 +78,7 @@ class Player extends Component {
                 <div className="card player-card text-center">
                     <div className="player-card-content">
                         <div className="card-body">
-                            <Chart data={pointHistory} labels={labels} title="Points per game"/>
+                            <LineChart datasets={chartDatasets} labels={labels}/>
                         </div>
                     </div>
                 </div>
