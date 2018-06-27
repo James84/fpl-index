@@ -41,18 +41,30 @@ class Player extends Component {
             );
         }
         
-        const pointHistory = player.playerSummary.history.map(history => history.totalPoints);
-        const labels = player.playerSummary.history.map(history => history.round);
+        console.log(player.playerSummary.history);
+        
+        const take = 10;
+        const pointHistory = player.playerSummary.history.map(history => history.totalPoints).slice(-take);
+        const goals = player.playerSummary.history.map(history => history.goals).slice(-take);
+        const assists = player.playerSummary.history.map(history => history.assists).slice(-take);
+
+        const labels = player.playerSummary.history.map(history => history.round).slice(-take);
         
         const chartDatasets = [{
             data: pointHistory,
             label: "Points per game",
-            backgroundColor: "rgba(75,192,192,0.4)",
-            borderColor: "rgba(75,192,192,1)",
-            pointBackgroundColor: "#fff",
-            pointsBorderColor: "rgba(75,192,192,1)",
-            fill: false,
-            borderJoinStyle: "miter"
+backgroundColor:
+"rgba(255,99,132,0.2)",
+borderColor:
+"rgba(255,99,132,1)",
+pointBackgroundColor:
+"rgba(255,99,132,1)",
+pointBorderColor:
+"#fff",
+pointHoverBackgroundColor:
+"#fff",
+pointHoverBorderColor:
+"rgba(255,99,132,1)"
         }];
         
         return (
