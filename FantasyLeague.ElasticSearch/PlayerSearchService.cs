@@ -2,13 +2,12 @@
 using FantasyLeague.ElasticSearch.Interfaces;
 using Nest;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace FantasyLeague.ElasticSearch
 {
-    public class PlayerSearchService : ISearchService<Player>
+    public class PlayerSearchService : ISearchService<Player, PlayerSearchCriteria>
     {
         private readonly ElasticClient _elasticClient;
         

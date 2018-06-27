@@ -15,10 +15,10 @@ namespace FantasyLeague.Controllers
     [Route("search/players")]
     public class PlayerSearchController : ControllerBase
     {
-        private readonly ISearchService<Player> _searchService;
+        private readonly ISearchService<Player, PlayerSearchCriteria> _searchService;
         private readonly IMapper _mapper;
 
-        public PlayerSearchController(ISearchService<Player> searchService, IMapper mapper)
+        public PlayerSearchController(ISearchService<Player, PlayerSearchCriteria> searchService, IMapper mapper)
         {
             _searchService = searchService;
             _mapper = mapper;

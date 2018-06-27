@@ -33,7 +33,7 @@ class Player extends Component {
     renderPlayer(){
         const player = this.props.player;
         
-        console.log(player);
+//        console.log(player);
         
         if(_.isEmpty(player)){
             return (

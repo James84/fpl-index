@@ -50,8 +50,8 @@ namespace FantasyLeague
             services.AddTransient<IPlayerRepository, PlayerRepository>();
             services.AddTransient<ITeamRepository, TeamRepository>();
             services.AddTransient<IIndexer, Indexer>();
-            services.AddTransient<ISearchService<Player>, PlayerSearchService>();
-            services.AddTransient<ISearchService<Team>, TeamSearchService>();
+            services.AddTransient<ISearchService<Player, PlayerSearchCriteria>, PlayerSearchService>();
+            services.AddTransient<ISearchService<Team, TeamSearchCriteria>, TeamSearchService>();
         }
 
         private static void SetUpHttpClients(IServiceCollection services)

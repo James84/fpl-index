@@ -8,6 +8,8 @@ namespace FantasyLeague
     {
         public DomainProfile()
         {
+            CreateMap<Team, TeamModel>();
+            CreateMap<CurrentEventFixture, CurrentEventFixtureModel>();
             CreateMap<PlayerSummary, PlayerSummaryModel>();
             CreateMap<HistoryPast, HistoryPastModel>();
             CreateMap<ExplainCollection, ExplainCollectionModel>();

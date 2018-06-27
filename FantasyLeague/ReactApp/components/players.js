@@ -14,7 +14,7 @@ class Players extends Component {
     
     
     renderPlayers(player){
-        console.log('player', player);
+//        console.log('player', player);
         return (
             <tr className="player-record" onClick={this.getPlayer.bind(this, player.id)} key={player.id}>
                 <td>{player.firstName}</td>

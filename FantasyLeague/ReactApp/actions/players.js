@@ -4,7 +4,7 @@ export const SEARCH_PLAYERS = 'SEARCH_PLAYERS';
 export const GET_PLAYER = 'GET_PLAYER';
 export const GET_ALL_PLAYERS = 'GET_ALL_PLAYERS';
 
-const ROOT = 'http://fantasy.league.local';
+export const ROOT = 'http://fantasy.league.local';
 const SEARCH_URL = `${ROOT}/search/players`;
 
 export function searchPlayers(lastName) {
