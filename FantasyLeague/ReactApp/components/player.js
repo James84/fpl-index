@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getPlayer } from '../actions/players'
 import _ from 'lodash';
-import Chart from './sparklines_chart';
+{/*import Chart from './sparklines_chart';*/}
+import Chart from './chart'
 import SearchBar from './searchbar'
 
 class Player extends Component {
@@ -41,6 +42,7 @@ class Player extends Component {
         }
         
         const pointHistory = player.playerSummary.history.map(history => history.totalPoints);
+        const labels = player.playerSummary.history.map(history => history.round);
         
         return (
             <div className="card-group">
@@ -65,7 +67,7 @@ class Player extends Component {
                 <div className="card player-card text-center">
                     <div className="player-card-content">
                         <div className="card-body">
-                            <Chart data={pointHistory} label="Points"/>
+                            <Chart data={pointHistory} labels={labels} title="Points per game"/>
                         </div>
                     </div>
                 </div>

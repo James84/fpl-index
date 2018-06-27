@@ -18,7 +18,7 @@
         Southampton = 14,
         Stoke = 15,
         Swansea = 16,
-        Sh_t = 17,
+        Tottenham = 17,
         Watford = 18,
         WestBrom = 19,
         WestHam = 20
