@@ -13,15 +13,13 @@ class SearchBar extends Component{
     constructor(props){
         super(props);
         
-        this.state = { term: '', team: 1};
+        this.state = { term: '', team: 0};
         
     }    
     
     submitForm(event){
         event.preventDefault();
-        console.log('submit form state', this.state);
         this.props.searchPlayers(this.state.term, this.state.team);
-        this.setState({ term: '' });
     }
     
     onLastNameInputChange(event){
@@ -55,6 +53,7 @@ class SearchBar extends Component{
                     onChange={this.onLastNameInputChange.bind(this)}/>
                 <span className="input-group-btn">
                     <select onChange={this.teamDropdownChange.bind(this)} className="form-control">
+                        <option value="0" key="0">All</option>
                         {
                             this.props.teams.map(this.renderTeamDropdown)
                         }

@@ -2,6 +2,7 @@
 {
     public enum Teams
     {
+        None = 0,
         Arsenal = 1,
         Bournemouth = 2,
         Brighton = 3,

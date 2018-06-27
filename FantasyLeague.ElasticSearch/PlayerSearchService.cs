@@ -1,4 +1,5 @@
-﻿using FantasyLeague.Domain;
+﻿using System;
+using FantasyLeague.Domain;
 using FantasyLeague.ElasticSearch.Interfaces;
 using Nest;
 using System.Collections.Generic;
@@ -36,23 +37,26 @@ namespace FantasyLeague.ElasticSearch
 
         public async Task<IEnumerable<Player>> PrefixSearchQuery(PlayerSearchCriteria criteria)
         {
-            //var results = await _elasticClient.SearchAsync<Player>(s => s.Size(100)
-            //                                                             .Query(q => q.Prefix(m => m.Field(p => p.SecondName)
-            //                                                                                        .Value(criteria.LastName)))
-            //                                                               .Query(q =>
-            //                                                                       q.Bool(b => 
-            //                                                                           b.Filter(d => 
-            //                                                                               d.Match(m  => 
-            //                                                                                   m.Field(p => p.Team)
-            //                                                                                       .Query(criteria.Team.ToString()))))));
-
-
-            var results = await _elasticClient.SearchAsync<Player>(s => s.Size(100).Query(q => q.
-                                                                                    Bool(b => b.
-                                                                                                Must(bs => bs.Term(p => p.Team, criteria.Team)))));
+            var results = await _elasticClient.SearchAsync<Player>(s => 
+                                                                       s.Size(100)
+                                                                           .Query(BuildPlayerQuery(criteria)
+                                                                          )
+                                                                      );
 
 
             return results.Documents;
+        }
+
+        private static Func<QueryContainerDescriptor<Player>, QueryContainer> BuildPlayerQuery(PlayerSearchCriteria criteria)
+        {
+            if (criteria.Team > 0)
+            {
+                return q =>
+                    q.Term(t => t.Field(p => p.Team).Value(criteria.Team)) &&
+                    q.Prefix(m => m.Field(p => p.SecondName).Value(criteria.LastName));
+            }
+
+            return q => q.Prefix(m => m.Field(p => p.SecondName).Value(criteria.LastName));
         }
 
         public async Task<Player> SearchById(int id)
