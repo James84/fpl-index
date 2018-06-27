@@ -1,9 +1,13 @@
 ﻿import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { players } from '../reducers/index';
+import { searchPlayers, getAllPlayers } from '../actions/players';
 
 class Players extends Component {
-
+    componentDidMount(){
+        this.props.getAllPlayers();
+    }
+    
     getPlayer(id){
         window.location.href = `/player/${id}`
     }
@@ -44,9 +48,9 @@ class Players extends Component {
     }
 }
 
-function mapDispatchToProps(state){
+function mapStateToProps(state){
 //    console.log('state', state);
     return ({players: state.players});
 }
 
-export default connect(mapDispatchToProps)(Players)
+export default connect(mapStateToProps, { searchPlayers, getAllPlayers })(Players)

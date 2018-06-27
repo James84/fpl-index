@@ -24,6 +24,16 @@ namespace FantasyLeague.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet("all")]
+        public async Task<ActionResult<IEnumerable<PlayerModel>>> GetAll(int skip, int take)
+        {
+            var players = await _searchService.GetAll(skip, take);
+
+            var mappedPlayers = players.Select(p => _mapper.Map<Player, PlayerModel>(p));
+
+            return mappedPlayers.ToList();
+        }
+
         [HttpGet("prefix")]
         // GET: /<controller>/
         public async Task<ActionResult<IEnumerable<PlayerModel>>> PlayerPrefixSearch([FromQuery]PlayerSearchCriteria criteria)
@@ -31,7 +41,7 @@ namespace FantasyLeague.Controllers
             var players = await _searchService
                                  .PrefixSearchQuery(criteria);
 
-            var mappedPlayers = players.ToList().Select(p => _mapper.Map<Player, PlayerModel>(p));
+            var mappedPlayers = players.Select(p => _mapper.Map<Player, PlayerModel>(p));
 
             return mappedPlayers.ToList();
         }
@@ -54,17 +64,6 @@ namespace FantasyLeague.Controllers
             var player = await _searchService.SearchById(id);
 
             return _mapper.Map<PlayerModel>(player);
-        }
-
-        [HttpGet("all")]
-        // GET: /<controller>/
-        public async Task<ActionResult<IEnumerable<PlayerModel>>> Players()
-        {
-            var players = await _searchService.Search();
-
-            var mappedPlayers = players.Select(p => _mapper.Map<PlayerModel>(p));
-
-            return mappedPlayers.ToList();
         }
     }
 }

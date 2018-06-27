@@ -8,7 +8,7 @@ namespace FantasyLeague.ElasticSearch
 {
     public class TeamSearchService : ISearchService<Team>
     {
-        public Task<IEnumerable<Team>> Search()
+        public Task<IEnumerable<Player>> GetAll(int skip = 0, int take = 100)
         {
             throw new NotImplementedException();
         }
