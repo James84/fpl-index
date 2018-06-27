@@ -36,9 +36,20 @@ namespace FantasyLeague.ElasticSearch
 
         public async Task<IEnumerable<Player>> PrefixSearchQuery(PlayerSearchCriteria criteria)
         {
-            var results = await _elasticClient.SearchAsync<Player>(s => s.Size(100)
-                                                                         .Query(q => q.Prefix(m => m.Field(p => p.SecondName)
-                                                                                                    .Value(criteria.LastName))));
+            //var results = await _elasticClient.SearchAsync<Player>(s => s.Size(100)
+            //                                                             .Query(q => q.Prefix(m => m.Field(p => p.SecondName)
+            //                                                                                        .Value(criteria.LastName)))
+            //                                                               .Query(q =>
+            //                                                                       q.Bool(b => 
+            //                                                                           b.Filter(d => 
+            //                                                                               d.Match(m  => 
+            //                                                                                   m.Field(p => p.Team)
+            //                                                                                       .Query(criteria.Team.ToString()))))));
+
+
+            var results = await _elasticClient.SearchAsync<Player>(s => s.Size(100).Query(q => q.
+                                                                                    Bool(b => b.
+                                                                                                Must(bs => bs.Term(p => p.Team, criteria.Team)))));
 
 
             return results.Documents;

@@ -53,19 +53,19 @@ class Player extends Component {
         const chartDatasets = [{
             data: pointHistory,
             label: "Points per game",
-backgroundColor:
-"rgba(255,99,132,0.2)",
-borderColor:
-"rgba(255,99,132,1)",
-pointBackgroundColor:
-"rgba(255,99,132,1)",
-pointBorderColor:
-"#fff",
-pointHoverBackgroundColor:
-"#fff",
-pointHoverBorderColor:
-"rgba(255,99,132,1)"
-        }];
+            backgroundColor:
+            "rgba(255,99,132,0.2)",
+            borderColor:
+            "rgba(255,99,132,1)",
+            pointBackgroundColor:
+            "rgba(255,99,132,1)",
+            pointBorderColor:
+            "#fff",
+            pointHoverBackgroundColor:
+            "#fff",
+            pointHoverBorderColor:
+            "rgba(255,99,132,1)"
+                    }];
         
         return (
             <div className="card-group">

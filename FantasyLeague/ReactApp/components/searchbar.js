@@ -13,20 +13,23 @@ class SearchBar extends Component{
     constructor(props){
         super(props);
         
-        this.state = { term: ''};
+        this.state = { term: '', team: 1};
         
-        this.submitForm = this.submitForm.bind(this);
-        this.onInputChange = this.onInputChange.bind(this);
     }    
     
     submitForm(event){
         event.preventDefault();
-        this.props.searchPlayers(this.state.term);
+        console.log('submit form state', this.state);
+        this.props.searchPlayers(this.state.term, this.state.team);
         this.setState({ term: '' });
     }
     
-    onInputChange(event){
+    onLastNameInputChange(event){
         this.setState({ term: event.target.value });
+    }
+    
+    teamDropdownChange(event){
+        this.setState({ team: event.target.value });
     }
     
     renderTeamDropdown(team){
@@ -43,15 +46,15 @@ class SearchBar extends Component{
         //Transfer value
         //Player name
         return(
-            <form onSubmit={this.submitForm} className="search-bar input-group">
+            <form onSubmit={this.submitForm.bind(this)} className="search-bar input-group">
                 <input 
                     type="input" 
                     className="form-control" 
                     placeholder="player"
                     value={this.state.term}
-                    onChange={this.onInputChange}/>
+                    onChange={this.onLastNameInputChange.bind(this)}/>
                 <span className="input-group-btn">
-                    <select className="form-control">
+                    <select onChange={this.teamDropdownChange.bind(this)} className="form-control">
                         {
                             this.props.teams.map(this.renderTeamDropdown)
                         }

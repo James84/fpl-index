@@ -7,8 +7,9 @@ export const GET_ALL_PLAYERS = 'GET_ALL_PLAYERS';
 export const ROOT = 'http://fantasy.league.local';
 const SEARCH_URL = `${ROOT}/search/players`;
 
-export function searchPlayers(lastName) {
-    const url = `${ROOT}/search/players/prefix?lastname=${lastName}`;
+export function searchPlayers(lastName, team) {
+    console.log('team', team);
+    const url = `${ROOT}/search/players/prefix?lastname=${lastName}&team=${team}`;
 
     const request = axios.get(url);
         
