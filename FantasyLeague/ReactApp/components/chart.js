@@ -1,7 +1,7 @@
 import React from 'react';
 import {Line} from 'react-chartjs-2';
 
-export default (props) => { 
+function LineChart(props) => { 
     const data = { datasets: props.datasets, labels: props.labels};
 
     return (
@@ -9,3 +9,4 @@ export default (props) => {
     );
 }
 
+export default LineChart;

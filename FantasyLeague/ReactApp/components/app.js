@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import SearchBar from "./searchbar";
 import Players from "./players";
@@ -16,10 +16,12 @@ let Index = (props) => {
 
 const App = () => {
     return(
-      <Switch>
-        <Route exact path="/" component={Index}/>                    
-        <Route path="/player/:id" component={Player}/>
-      </Switch>
+      <BrowserRouter>
+          <Switch>
+            <Route path="/player/:id" component={Player}/>
+            <Route exact path="/" component={Index}/>                    
+          </Switch>
+      </BrowserRouter>
     );
 }
 

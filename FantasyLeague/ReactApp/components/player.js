@@ -5,6 +5,7 @@ import _ from 'lodash';
 {/*import Chart from './sparklines_chart';*/}
 import LineChart from './chart'
 import SearchBar from './searchbar'
+import { Link } from 'react-router-dom';
 
 class Player extends Component {
     componentDidMount(){
@@ -102,7 +103,9 @@ class Player extends Component {
         return (
             <div className="player-details-container">
                 <div className="row justify-content-lg-center">
-                    <a className="btn btn-primary" href="/">&lt; Back to search</a>
+                    <Link className="btn btn-primary" to="/">
+                        &lt; Back to search
+                    </Link>
                 </div>
                 <div className="row justify-content-lg-center">
                     {this.renderPlayer()}
